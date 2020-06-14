@@ -24,6 +24,9 @@
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.DefaultDays)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.DateCreated)
             </th>
             <th>Actions</th>
@@ -39,20 +42,35 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.DefaultDays)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.DateCreated)
             </td>
             <td>
-                <a asp-action="Edit" class="btn btn-light btn-circle btn-md" asp-route-id="@item.Id">
+                <a asp-action="Edit" 
+                   class="btn btn-light btn-circle btn-sm" 
+                   data-toggle="tooltip" 
+                   data-placement="top" 
+                   title="Edit Leave type details" asp-route-id="@item.Id">
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                 </a> 
-                <a asp-action="Details" class="btn btn-light btn-circle btn-md" asp-route-id="@item.Id">
+                <a asp-action="Details" 
+                   class="btn btn-light btn-circle btn-sm" 
+                   data-toggle="tooltip" 
+                   data-placement="top" 
+                   title="View details" asp-route-id="@item.Id">
                     <i class="fa fa-info-circle" aria-hidden="true"></i>
                 </a> 
-                <a asp-action="Delete" class="btn btn-light btn-circle btn-md" asp-route-id="@item.Id" onclick="return confirm('Delete Record?')">
+                <a asp-action="Delete" 
+                   class="btn btn-light btn-circle btn-sm" 
+                   data-toggle="tooltip" 
+                   data-placement="top" 
+                   title="Delete leave type" asp-route-id="@item.Id" onclick="return confirm('Delete Record?')">
                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                 </a>
             </td>
         </tr>
-}
+} 
     </tbody>
 </table>

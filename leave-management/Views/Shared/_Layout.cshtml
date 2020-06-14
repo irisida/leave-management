@@ -1,6 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@using leave_management.Data;
+@inject SignInManager<Employee> SignInManager
+@inject UserManager<Employee> UserManager
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,18 +16,18 @@
     <style type="text/css">
 
         .btn-circle.btn-sm {
-            width: 30px;
-            height: 30px;
-            padding: 2px 2px;
-            border-radius: 15px;
-            font-size: 12px;
+            width: 32px;
+            height: 32px;
+            padding: 1px 1px;
+            border-radius: 25px;
+            font-size: 18px;
             text-align: center;
         }
 
         .btn-circle.btn-md {
             width: 45px;
             height: 45px;
-            padding: 3px 3px;
+            padding: 2px 2px;
             border-radius: 25px;
             font-size: 22px;
             text-align: center;
@@ -70,9 +71,9 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                         <a class="dropdown-item text-dark" asp-controller="LeaveTypes" asp-action="Index">Leave Type</a>
-                                        <a class="dropdown-item text-dark" href="#">Allocation</a>
+                                        <a class="dropdown-item text-dark" asp-controller="LeaveAllocation" asp-action="Index">Allocation</a>
                                         <a class="dropdown-item text-dark" href="#">Application</a>
-                                        <a class="dropdown-item text-dark" href="#">Employee</a>
+                                        <a class="dropdown-item text-dark" asp-controller="LeaveAllocation" asp-action="ListEmployees">Employees</a>
                                     </div>
                                 </li>
                             }
@@ -88,7 +89,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted bg-dark">
         <div class="container">
             &copy; @DateTime.Now.Year - Core Leave Management - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
