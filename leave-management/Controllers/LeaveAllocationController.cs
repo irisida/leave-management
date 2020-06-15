@@ -123,21 +123,44 @@ namespace leave_management.Controllers
         // GET: LeaveAllocationController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var leaveAllocation = _allocationrepo.FindById(id);
+            var model = _mapper.Map<EditLeaveAllocationViewModel>(leaveAllocation);
+            return View(model);
         }
 
         // POST: LeaveAllocationController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(EditLeaveAllocationViewModel model)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
+
+                /* find the original of the record we would 
+                 * like to mutate. 
+                 * Set the value of the field.
+                 */ 
+                var record = _allocationrepo.FindById(model.Id);
+                record.NumberOfDays = model.NumberOfDays;
+
+                
+                var isSuccess = _allocationrepo.Update(record);
+
+                if (!isSuccess)
+                {
+                    ModelState.AddModelError("", "Error edditing a leave allocation.");
+                    return View(model);
+                }
+
+                return RedirectToAction(nameof(Details), new { id = model.EmployeeId });
             }
             catch
             {
-                return View();
+                return View(model);
             }
         }
 

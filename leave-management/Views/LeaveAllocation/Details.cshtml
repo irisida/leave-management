@@ -81,6 +81,8 @@
                    data-toggle="tooltip" 
                    data-placement="top" 
                    title="Edit this allocation"
+                   asp-route-id="@item.Id"
+                   asp-action="Edit"
                    >
                     <i class="fa fa-pencil"></i>
                 </a>      
@@ -91,6 +93,10 @@
     </ul>
 </div>
 
+<hr />
+
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="ListEmployees">
+        <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+    Back to Employees</a>
 </div>
