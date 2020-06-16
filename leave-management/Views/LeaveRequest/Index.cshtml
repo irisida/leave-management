@@ -1,0 +1,118 @@
+﻿@model AdminViewLeaveRequestViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>Requests Summary</h3>
+<hr />
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body text-center">
+                <h3 class="card-title">@Model.PendingRequests</h3>
+                <p class="card-text">@Html.DisplayNameFor(model => model.PendingRequests)</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body text-center">
+                <h3 class="card-title">@Model.ApprovedRequests</h3>
+                <p class="card-text">@Html.DisplayNameFor(model => model.ApprovedRequests)</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body text-center">
+                <h3 class="card-title">@Model.RejectedRequests</h3>
+                <p class="card-text">@Html.DisplayNameFor(model => model.RejectedRequests)</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body text-center">
+                <h3 class="card-title">@Model.TotalRequests</h3>
+                <p class="card-text">@Html.DisplayNameFor(model => model.TotalRequests)</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<h3>All Requests</h3>
+<hr />
+<table id="tbldata" class="table">
+    <thead>
+        <tr>
+            <th>
+                Employee Name
+            </th>
+            <th>
+                Start date
+            </th>
+            <th>
+                End Date
+            </th>
+            <th>
+                Leave Type
+            </th>
+            <th>
+                Date Requested
+            </th>
+            <th>
+                Is Approved
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.LeaveRequests) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequestingEmployee.Firstname) @Html.DisplayFor(modelItem => item.RequestingEmployee.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateRequested)
+            </td>
+            <td>
+                @if (item.Approved == true)
+                {
+                    <span class="badge badge-success">Approved</span>
+                }
+                else if (item.Approved == false)
+                {
+                    <span class="badge badge-danger">Rejected</span>
+                }
+                else
+                {
+                    <span class="badge badge-light">Pending</span>
+                }
+            </td>
+            
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

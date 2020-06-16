@@ -28,4 +28,19 @@ namespace leave_management.Models
         public EmployeeViewModel ApprovedBy { get; set; }
         public string ApprovedById { get; set; }
     }
+
+    public class AdminViewLeaveRequestViewModel
+    {
+        [Display(Name = "Total Requests")]
+        public int TotalRequests { get; set; }
+        [Display(Name = "Approved Requests")]
+        public int ApprovedRequests { get; set; }
+        [Display(Name = "Pending Requests")]
+        public int PendingRequests { get; set; }
+        [Display(Name = "Rejected Requests")]
+        public int RejectedRequests { get; set; }
+
+        public List<LeaveRequestViewModel> LeaveRequests { get; set; }
+
+    }
 }
