@@ -47,6 +47,18 @@ namespace leave_management.Repository
                 .FirstOrDefault(q => q.Id == id);
         }
 
+        public ICollection<LeaveRequest> GetLeaveRequestsByEmployee(string userId)
+        {
+            var leaveRequests = _db.LeaveRequests
+                .Include(q => q.RequestingEmployee)
+                .Include(q => q.ApprovedBy)
+                .Include(q => q.LeaveType)
+                .Where(q => q.RequestingEmployeeId == userId)
+                .ToList();
+
+            return leaveRequests;
+        }
+
         public bool IsExists(int id)
         {
             var exists = _db.LeaveRequests.Any(q => q.Id == id);
@@ -57,7 +69,7 @@ namespace leave_management.Repository
         {
             return _db.SaveChanges() > 0;
         }
-
+        
         public bool Update(LeaveRequest entity)
         {
             _db.LeaveRequests.Update(entity);

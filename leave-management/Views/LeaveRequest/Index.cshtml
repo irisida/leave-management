@@ -45,12 +45,14 @@
 <br />
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-outline-success" asp-action="Create">
+    <i class="fa fa-plus-circle"></i>
+    Create New</a>
 </p>
 
 <h3>All Requests</h3>
 <hr />
-<table id="tbldata" class="table">
+<table id="tbldata" class="table" style="width:100%">
     <thead>
         <tr>
             <th>
@@ -64,7 +66,7 @@
             </th>
             <th>
                 Leave Type
-            </th>
+            </th> 
             <th>
                 Date Requested
             </th>
@@ -81,16 +83,16 @@
                 @Html.DisplayFor(modelItem => item.RequestingEmployee.Firstname) @Html.DisplayFor(modelItem => item.RequestingEmployee.Lastname)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
+                @Html.DisplayFor(modelItem => item.StartDate.Date)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EndDate)
+                @Html.DisplayFor(modelItem => item.EndDate.Date)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.LeaveType.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DateRequested)
+                @Html.DisplayFor(modelItem => item.DateRequested.Date)
             </td>
             <td>
                 @if (item.Approved == true)
@@ -105,12 +107,18 @@
                 {
                     <span class="badge badge-light">Pending</span>
                 }
-            </td>
+            </td>   
             
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                <a asp-action="Details" 
+                   asp-route-id="@item.Id"
+                   class="btn btn-light btn-circle btn-sm"
+                   data-toggle="tooltip"
+                   data-placement="top"
+                   title="View details"
+                 > 
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                </a>
             </td>
         </tr>
 }
