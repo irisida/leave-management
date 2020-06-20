@@ -4,7 +4,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<h3>Edit @Model.LeaveType.Name Allocation for <span style="color: crimson">@Model.Employee.Firstname @Model.Employee.Lastname</span></h3>
+<h4>Edit @Model.LeaveType.Name Allocation for <span style="color: crimson">@Model.Employee.Firstname @Model.Employee.Lastname</span></h4>
 
 <hr />
 <div class="row">
@@ -30,7 +30,7 @@
 <div>
     <a asp-action="Details"
        asp-route-id="@Model.EmployeeId">
-        <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+        <i class="fas fa-chevron-circle-left" aria-hidden="true"></i>
         Back to Allocations for @Model.Employee.Firstname @Model.Employee.Lastname
     </a>
 </div> 

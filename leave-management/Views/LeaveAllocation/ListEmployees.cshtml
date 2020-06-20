@@ -4,7 +4,7 @@
     ViewData["Title"] = "ListEmployees";
 }
 
-<h1>Employees</h1>
+<h4>All Employees</h4>
 <hr />
 
 <table id="tbldata" class="table">
@@ -42,13 +42,13 @@
             </td>
 
             <td>
-                <a class="btn btn-light btn-circle btn-sm" 
+                <a class="btn btn-light btn-outline-dark btn-circle btn-sm" 
                    data-toggle="tooltip" 
                    data-placement="top" 
                    title="View Employee details" 
                    asp-action="Details" 
                    asp-route-id="@item.Id">
-                    <i class="fa fa-info-circle"></i>
+                    <i class="fas fa-info"></i>
                 </a>
             </td>
         </tr>

@@ -5,15 +5,12 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Leave Types</h1>
+<h4>Leave Types</h4>
 <hr />
 
 <table id="tbldata" class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
@@ -31,9 +28,6 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
@@ -44,25 +38,25 @@
                 </td>
                 <td>
                     <a asp-action="Edit"
-                       class="btn btn-light btn-circle btn-sm"
+                       class="btn btn-light btn-outline-dark btn-circle btn-sm"
                        data-toggle="tooltip"
                        data-placement="top"
                        title="Edit Leave type details" asp-route-id="@item.Id">
-                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        <i class="fas fa-pencil-alt" aria-hidden="true"></i>
                     </a>
                     <a asp-action="Details"
-                       class="btn btn-light btn-circle btn-sm"
+                       class="btn btn-light btn-outline-dark btn-circle btn-sm"
                        data-toggle="tooltip"
                        data-placement="top"
                        title="View details" asp-route-id="@item.Id">
-                        <i class="fa fa-info-circle" aria-hidden="true"></i>
+                        <i class="fas fa-info" aria-hidden="true"></i>
                     </a>
                     <a asp-action="Delete"
-                       class="btn btn-light btn-circle btn-sm"
+                       class="btn btn-light btn-outline-dark btn-circle btn-sm"
                        data-toggle="tooltip"
                        data-placement="top"
                        title="Delete leave type" asp-route-id="@item.Id" onclick="return confirm('Delete Record?')">
-                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        <i class="fas fa-trash-alt" aria-hidden="true"></i>
                     </a>
                 </td>
             </tr>
@@ -72,7 +66,8 @@
 </table>
 
 <div class="bottom-action">
-    <a asp-action="Create" class="btn btn-success btn-circle btn-md ">
-        <i class="fa fa-plus-circle"></i>
+    <a asp-action="Create" class="btn btn-outline-success">
+        <i class="fas fa-plus-circle"></i>
+        New Leave Type
     </a>
 </div>

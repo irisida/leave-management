@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Leave Application types</h1>
+<h4>Allocate Leave allowances</h4>
 <hr />
 
 <table id="tbldata" class="table">
@@ -25,13 +25,13 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                <a class="btn btn-light btn-circle btn-sm"  
+                <a class="btn btn-light btn-outline-success btn-circle btn-sm"  
                    data-toggle="tooltip" 
                    data-placement="top" 
                    title="Allocate Leave type to Employees" 
                    asp-action="SetLeave" 
                    asp-route-id="@item.Id">
-                    <i class="fa fa-check-circle"></i>
+                    <i class="fas fa-check"></i>
                 </a>
             </td>
         </tr>

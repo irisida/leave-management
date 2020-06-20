@@ -4,99 +4,113 @@
     ViewData["Title"] = "Details";
 }
 
-<h3>Employee profile - <span style="color: crimson;">@Model.Employee.Firstname @Model.Employee.Lastname </span></h3>
+<h3>Employee Profiles</h3>
 <hr />
 
-<div>
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Employee.Id)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Employee.Id)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Employee.Username)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Employee.Username)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Employee.Email)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Employee.Email)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Employee.PhoneNumber)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Employee.PhoneNumber)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Employee.Firstname)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Employee.Firstname)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Employee.Lastname)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Employee.Lastname)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Employee.TaxId)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Employee.TaxId)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Employee.DateOfBirth)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Employee.DateOfBirth)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Employee.DateJoined)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Employee.DateJoined)
-        </dd>
-    </dl>
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-body">
+                <h4><span style="color: crimson;">@Model.Employee.Firstname @Model.Employee.Lastname </span></h4>
+                <hr />
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Employee.Id)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Employee.Id)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Employee.Username)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Employee.Username)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Employee.Email)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Employee.Email)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Employee.PhoneNumber)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Employee.PhoneNumber)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Employee.Firstname)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Employee.Firstname)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Employee.Lastname)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Employee.Lastname)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Employee.TaxId)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Employee.TaxId)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Employee.DateOfBirth)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Employee.DateOfBirth)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Employee.DateJoined)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Employee.DateJoined)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    
 </div>
 
-<hr />
 
-<h3>Leave Allocations</h3>
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-body">
+                <h4>Available Leave Entitlement</h4>
+                <ul class="list-group list-group-flush">
 
-<div class="card" style="width: 24rem;">
-    <ul class="list-group list-group-flush">
+                    @foreach (var item in Model.LeaveAllocation)
+                    {
+                        <li class="list-group-item">
+                            <h6>
+                                @item.LeaveType.Name <span class="right badge badge-secondary">@item.NumberOfDays</span>
+                                <a class="btn btn-light btn-circle btn-sm"
+                                   data-toggle="tooltip"
+                                   data-placement="top"
+                                   title="Edit this allocation"
+                                   asp-route-id="@item.Id"
+                                   asp-action="Edit">
+                                    <i class="right fas fa-pencil-alt"></i>
+                                </a>
+                            </h6>
+                        </li>
 
-        @foreach (var item in Model.LeaveAllocation)
-        {
-            <li class="list-group-item">
-                <h6>@item.LeaveType.Name <span class="badge badge-secondary">@item.NumberOfDays</span>
-                <a class="btn btn-light btn-circle btn-sm"
-                   data-toggle="tooltip" 
-                   data-placement="top" 
-                   title="Edit this allocation"
-                   asp-route-id="@item.Id"
-                   asp-action="Edit"
-                   >
-                    <i class="fa fa-pencil"></i>
-                </a>      
-                </h6>
-            </li>
-
-        }
-    </ul>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 
 <hr />
 
 <div>
     <a asp-action="ListEmployees">
-        <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+        <i class="fas fa-chevron-circle-left" aria-hidden="true"></i>
     Back to Employees</a>
 </div>

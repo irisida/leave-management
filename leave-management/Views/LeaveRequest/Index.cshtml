@@ -4,53 +4,55 @@
     ViewData["Title"] = "Index";
 }
 
-<h3>Requests Summary</h3>
-<hr />
+    <div class="row">
+        <div class="col-md-3">
+            <div class="info-box">
+                <span class="info-box-icon bg-info"><i class="fas fa-envelope"></i></span>
 
-<div class="row">
-    <div class="col-md-3">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body text-center">
-                <h3 class="card-title">@Model.PendingRequests</h3>
-                <p class="card-text">@Html.DisplayNameFor(model => model.PendingRequests)</p>
+                <div class="info-box-content">
+                    <span class="info-box-text">@Model.PendingRequests</span>
+                    <span class="info-box-number">@Html.DisplayNameFor(model => model.PendingRequests)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="info-box">
+                <span class="info-box-icon bg-success"><i class="fas fa-envelope-open"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">@Model.ApprovedRequests</span>
+                    <span class="info-box-number">@Html.DisplayNameFor(model => model.ApprovedRequests)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="info-box">
+                <span class="info-box-icon bg-danger"><i class="fas fa-envelope-open"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">@Model.RejectedRequests</span>
+                    <span class="info-box-number">@Html.DisplayNameFor(model => model.RejectedRequests)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="info-box">
+                <span class="info-box-icon bg-secondary"><i class="fas fa-envelope-open-text"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">@Model.TotalRequests</span>
+                    <span class="info-box-number">@Html.DisplayNameFor(model => model.TotalRequests)</span>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body text-center">
-                <h3 class="card-title">@Model.ApprovedRequests</h3>
-                <p class="card-text">@Html.DisplayNameFor(model => model.ApprovedRequests)</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body text-center">
-                <h3 class="card-title">@Model.RejectedRequests</h3>
-                <p class="card-text">@Html.DisplayNameFor(model => model.RejectedRequests)</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body text-center">
-                <h3 class="card-title">@Model.TotalRequests</h3>
-                <p class="card-text">@Html.DisplayNameFor(model => model.TotalRequests)</p>
-            </div>
-        </div>
-    </div>
-</div>
 
 <br />
 
-<p>
-    <a class="btn btn-outline-success" asp-action="Create">
-    <i class="fa fa-plus-circle"></i>
-    Create New</a>
-</p>
-
-<h3>All Requests</h3>
+<h4>All Leave Requests</h4>
 <hr />
 <table id="tbldata" class="table" style="width:100%">
     <thead>
@@ -112,12 +114,12 @@
             <td>
                 <a asp-action="Details" 
                    asp-route-id="@item.Id"
-                   class="btn btn-light btn-circle btn-sm"
+                   class="btn btn-light btn-outline-dark btn-circle btn-sm"
                    data-toggle="tooltip"
                    data-placement="top"
                    title="View details"
                  > 
-                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    <i class="fas fa-pencil-alt" aria-hidden="true"></i>
                 </a>
             </td>
         </tr>
